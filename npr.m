@@ -138,12 +138,7 @@ function plate_number =  npr(image)
     plate_number = char_reg(template,characters);
 
     %% Stores the license plate text in a txt file
-    fid = fopen('license.txt','wt');
-    fprintf(fid,'-----------------------------------\n');
-    fprintf(fid,'License plate number: ');
-    fprintf(fid,plate_number);
-    fprintf(fid,'\n-----------------------------------\n');
-    fclose(fid);
+    text_storage(plate_number)
 end
 
 
