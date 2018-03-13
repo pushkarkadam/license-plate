@@ -3,7 +3,7 @@
 % Date: 15/10/2017
 
 %% Importing image
-function npr(img)
+function plate_number =  npr(img)
     %I = imread('subaru.jpeg');
     % I = imread('newcar7.jpeg');
     % I = imread('newcar3.jpeg');
@@ -171,7 +171,7 @@ function npr(img)
 
     plate_number = char_reg(template,chars);
 
-
+    %% Stores the license plate text in a txt file
     fid = fopen('license.txt','wt');
     fprintf(fid,'-----------------------------------\n');
     fprintf(fid,'License plate number: ');
