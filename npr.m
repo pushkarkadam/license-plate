@@ -123,19 +123,19 @@ function plate_number =  npr(image)
     % different sizes.
     % By simply looping over every bounding box, bounding box pixels can be
     % extracted to each character and it can be placed into a cell array.
-    chars = cell(1,numel(structure));
+    characters = cell(1,numel(structure));
     for idx = 1:numel(structure)
-        chars{idx} = dilate_character_image(bb(idx,2):bb(idx,2)+bb(idx,4)-1, bb(idx,1):bb(idx,1)+bb(idx,3)-1);
+        characters{idx} = dilate_character_image(bb(idx,2):bb(idx,2)+bb(idx,4)-1, bb(idx,1):bb(idx,1)+bb(idx,3)-1);
     end
 
     %% Resizing all the images
     % Resizing is essential for template matching
     for idx = 1:numel(structure)
-        chars{idx} = imresize(chars{idx}, [57 42]);
+        characters{idx} = imresize(characters{idx}, [57 42]);
     end
     
     %% Character recognition code
-    plate_number = char_reg(template,chars);
+    plate_number = char_reg(template,characters);
 
     %% Stores the license plate text in a txt file
     fid = fopen('license.txt','wt');
