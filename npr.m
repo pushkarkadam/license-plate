@@ -3,6 +3,8 @@
 % Date: 15/10/2017
 
 %% Importing image
+% Use imread to store the image in a variable and then pass it as a
+% parameter in this funtion.
 function plate_number =  npr(image)
     %% Importing the template images
     template = temp_read();
