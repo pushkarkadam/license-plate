@@ -7,7 +7,7 @@
 % parameter in this funtion.
 function plate_number =  npr(image)
     %% Importing the template images
-    template = temp_read();
+    template = template_reader();
 
     %% Resizing image
     % It was important to resize the image otherwise MATLAB keeps on giving
@@ -137,7 +137,7 @@ function plate_number =  npr(image)
     end
     
     %% Character recognition code
-    plate_number = char_reg(template,characters);
+    plate_number = character_recognition(template,characters);
 
     %% Stores the license plate text in a txt file
     text_storage(plate_number)
