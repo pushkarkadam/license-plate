@@ -40,18 +40,22 @@ function plate_number =  npr(image)
     SE = strel('square',3);
 
     edge_image = imdilate(edge_image, SE);
+    figure();imshow(edge_image)
 
     %% Filling the edges with white color
     fill_image = imfill(edge_image,'holes');
+    figure();imshow(fill_image)
 
     %% Removing the other edges that are not inside the number plate region
     eroded_image = fill_image;
+    figure();imshow(eroded_image)
     
     %% Using erode to get rid of unnecessary dots on the image
     % This command is used three times to get rid of most of the dots
     for x = 1:3
         eroded_image = imerode(eroded_image,SE);
     end
+    figure();imshow(eroded_image)
 
     %% Getting the characters on the number plate
     % The binary image obtained after converting the B&W image is multiplied
@@ -62,7 +66,7 @@ function plate_number =  npr(image)
     % on white in the result of this image.
     % Always multiple two binary images.
     character_image = binary_image.*eroded_image;
-
+    figure();imshow(character_image)
     %% Character segmentation
     % This is very much important.
     % What I did here is that I reversed the image turning all the black to
@@ -83,15 +87,21 @@ function plate_number =  npr(image)
     character_image = ~character_image;
     character_image_erode = imclearborder(character_image);
     
-    for x = 1:3
+    figure();imshow(character_image_erode)
+    
+    for x = 1:2
         character_image_erode = imerode(character_image_erode,SE);
     end
+    
+    figure();imshow(character_image_erode)
 
     dilate_character_image = character_image_erode;
     
     for x = 1:4
         dilate_character_image = imdilate(dilate_character_image,SE);
     end
+    
+    figure();imshow(dilate_character_image)
 
     %% Using Bounding Box
     % s is a structure where each element in this structure contains a
