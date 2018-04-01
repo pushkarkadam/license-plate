@@ -25,7 +25,7 @@ function plate_name = character_recognition(template,char_iden)
         for idx2 = 1:size(plate,2)
             r = corr2(plate{idx2},charac_iden{idx});
             
-            if r >= 0.58
+            if r >= 0.56
                k = size(plate_string,2)+1;
                plate_string(k) = temp_alpha(idx2);
                break % break is used for stopping the loop once identified

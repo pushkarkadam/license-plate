@@ -97,7 +97,7 @@ function plate_number =  npr(image)
 
     dilate_character_image = character_image_erode;
     
-    for x = 1:4
+    for x = 1:3
         dilate_character_image = imdilate(dilate_character_image,SE);
     end
     
