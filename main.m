@@ -14,6 +14,8 @@ while true
     %sensor_distance = convlength(sensor_distance,'m','in');
 
     if (sensor_distance <= threshold_distance)
+        writeDigitalPin(arduino_board, 'D11',1);
+        pause(2);
         % Capturing the images from the cameras
         clear sensor;
         fprintf('Processing...\n');
@@ -29,6 +31,8 @@ while true
 
         % Directory sub-routine
         create_directory(license_plate, front_image, left_image, right_image);
+        fprintf('Detection Complete!\nDirectory Created.\n');
+        writeDigitalPin(arduino_board,'D11',0);
         break;
     else
         continue;
