@@ -5,7 +5,7 @@ arduino_board = arduino();
 sensor = addon(arduino_board, 'JRodrigoTech/HCSR04','D12','D13');
 
 %% Main License plate recognition algorithm
-threshold_distance = 0.05; % Distance from the sensor to the object in metres
+threshold_distance = 0.06; % Distance from the sensor to the object in metres
 
 while true
     sensor_distance = readDistance(sensor);
@@ -15,12 +15,16 @@ while true
 
     if (sensor_distance <= threshold_distance)
         % Capturing the images from the cameras
+        clear sensor;
+        fprintf('Processing...\n');
+        fprintf('Capturing images...\n')
         pause(5)
         front_image = image_capture('USB Camera');
         left_image = image_capture('USB Camera #2');
         right_image = image_capture('USB Camera #3');
 
         % License plate recognition sub-routine
+        fprintf('Detecting License Plate...\n')
         license_plate = npr(front_image);
 
         % Directory sub-routine
