@@ -1,5 +1,4 @@
 %% Creating Arduino Object
-%arduino_board = arduino('COM38','Uno','Libraries','JRodrigoTech/HCSR04');
 arduino_board = arduino();
 
 %% Creating Sensor object
@@ -16,9 +15,10 @@ while true
 
     if (sensor_distance <= threshold_distance)
         % Capturing the images from the cameras
-        front_image = image_capture('USB Camera #2');
-        left_image = image_capture('USB Camera #3');
-        right_image = image_capture('USB Camera #4');
+        pause(5)
+        front_image = image_capture('USB Camera');
+        left_image = image_capture('USB Camera #2');
+        right_image = image_capture('USB Camera #3');
 
         % License plate recognition sub-routine
         license_plate = npr(front_image);
