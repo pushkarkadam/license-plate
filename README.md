@@ -4,6 +4,8 @@ This project is a preliminary stage of the automatic inspection of a car enterin
 
 The code and templates are fine-tuned to detect the text on the car license plates of NSW state of Australia in a controlled environment.
 
+![](Images/setup.jpg)
+
 ### Essential components
 
 * Arduino micro-controller
